@@ -114,7 +114,7 @@ class Portfolio extends React.Component {
                 } = stock;
 
                 const market_value = shares_owned * market_price;
-                const unrealized_gain_loss = market_value - (shares_owned * cost_per_share);
+                const unrealized_gain_loss = market_value - shares_owned * cost_per_share;
 
                 return (
                   <tr key={index}>
@@ -122,8 +122,8 @@ class Portfolio extends React.Component {
                     <td><input onChange={e => this.handleChange(e, index)} type="number" name="shares_owned" value={shares_owned} /></td>
                     <td><input onChange={e => this.handleChange(e, index)} type="number" name="cost_per_share" value={cost_per_share} /></td>
                     <td><input onChange={e => this.handleChange(e, index)} type="number" name="market_price" value={market_price} /></td>
-                    <td></td>
-                    <td></td>
+                    <td>{market_value}</td>
+                    <td>{unrealized_gain_loss}</td>
                     <td><button className="btn btn-light btn-sm" onClick={() => this.removeStock(index)}>remove</button></td>
                   </tr>
                 )
